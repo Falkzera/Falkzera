@@ -11,15 +11,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/plotly/plotly-original.svg" width="60"/>
 </div>
 
-### My Stats
-
-<div>
-  <a href="https://github.com/falkzera">
-    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Falkzera&layout=compact&langs_count=7&theme=dark"/>
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Falkzera&show_icons=true&theme=dark&include_all_commits=true&count_private=true"/>
-  </a>
-</div>
-
 ### Contacts
 
 <div>
