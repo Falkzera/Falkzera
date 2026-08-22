@@ -68,9 +68,31 @@ VAO = 9            # entre um chip e o proximo
 PAD = 9            # respiro interno do chip
 VELOCIDADE = 34    # pixels por segundo
 
-DADOS = json.loads(Path(__file__).with_name("stack-dados.json").read_text(encoding="utf-8"))
-GRUPOS = DADOS["grupos"]
-TRACADOS = DADOS["tracados"]
+# ─── A LISTA. É AQUI QUE SE ACRESCENTA OU TIRA TECNOLOGIA. ────────────────────
+#
+# ("Nome que aparece", "slug do simple-icons" ou None se não existe marca)
+#
+# Para acrescentar uma tecnologia:
+#   1. veja em simpleicons.org se ela tem marca, e anote o slug;
+#   2. pegue o `d` do SVG dela e acrescente em `tools/icones-stack.json`;
+#   3. bote a linha no grupo certo abaixo;
+#   4. rode `python3 tools/gerar_stack.py`.
+#
+# Sem marca no conjunto, use None. O chip sai só com o nome, e NÃO com logo
+# emprestado de coisa parecida. Ícone é enfeite de quem tem.
+#
+# A ordem dos grupos define a ordem nas esteiras: os três primeiros grupos vão
+# para a de cima, os três últimos para a de baixo (ver ESTEIRAS).
+GRUPOS = [
+    ("languages/", [("Python", 'python'), ("TypeScript", 'typescript'), ("JavaScript", 'javascript'), ("SQL", None), ("HTML", 'html5'), ("CSS", 'css')]),
+    ("frameworks/", [("React", 'react'), ("Next.js", 'nextdotjs'), ("Node.js", 'nodedotjs'), ("NestJS", 'nestjs'), ("Vite", 'vite'), ("TanStack Query", 'reactquery')]),
+    ("databases/", [("PostgreSQL", 'postgresql'), ("MySQL", 'mysql'), ("Redis", 'redis'), ("MongoDB", 'mongodb'), ("DuckDB", 'duckdb')]),
+    ("data/", [("pandas", 'pandas'), ("NumPy", 'numpy'), ("statsmodels", None), ("Matplotlib", None), ("seaborn", None), ("Plotly", 'plotly'), ("Spark", 'apachespark')]),
+    ("ai/", [("LangChain", 'langchain'), ("LangGraph", 'langgraph'), ("Llama", None), ("TensorFlow", 'tensorflow')]),
+    ("orchestration/", [("Docker", 'docker'), ("Kubernetes", 'kubernetes')]),
+]
+
+TRACADOS = json.loads(Path(__file__).with_name("icones-stack.json").read_text(encoding="utf-8"))
 
 
 def largura(nome, tem_icone):
